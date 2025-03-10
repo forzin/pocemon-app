@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Pokemon } from './types/Pokemon';
-import CustomDropdown from './components/CustomDropdown';
 import { SelectedPokemons } from './components/SelectedPokemons';
 import DropdownButton from './components/Dropdown';
 import PokemonSprites from './components/PokemonSprites';
+import PokemonSelect from './components/PokemonSelect';
 
 function App() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    watch,
   } = useForm();
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [selectedPokemons, setSelectedPokemons] = useState<string[]>([]);
@@ -32,6 +34,11 @@ function App() {
     setIsDropdownVisible((prev) => !prev);
   };
 
+  const handleTrimInput = (fieldName: string) => {
+    const value = watch(fieldName).trim();
+    setValue(fieldName, value);
+  };
+
   return (
     <div
       style={{
@@ -46,13 +53,11 @@ function App() {
           className="flex justify-center items-start"
           style={{ position: 'absolute', top: '183px', left: '260px' }}
         >
-          <CustomDropdown
-            isVisible={isDropdownVisible}
-            toggleDropdown={toggleDropdown}
+          <PokemonSelect
             pokemons={pokemons}
             selectedPokemons={selectedPokemons}
             setSelectedPokemons={setSelectedPokemons}
-            setWarningMessage={setWarningMessage}
+            isVisible={isDropdownVisible}
           />
         </div>
 
@@ -66,7 +71,6 @@ function App() {
           />
         </div>
 
-        {/* Блок з помилками */}
         <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-full max-w-md space-y-7 z-50">
           {Object.keys(errors).length > 0 || warningMessage ? (
             <>
@@ -89,7 +93,7 @@ function App() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6 w-full max-w-md p-6 bg-white rounded-lg shadow-lg flex items-center relative"
+          className="space-y-6 w-full max-w-md p-6 bg-white rounded-lg shadow-xl flex items-center relative"
         >
           <div className="flex-1 space-y-6">
             <div>
@@ -99,8 +103,9 @@ function App() {
                   required: true,
                   minLength: 2,
                   maxLength: 12,
+                  onBlur: () => handleTrimInput('firstName'),
                 })}
-                className="mt-1 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="mt-1 p-3 w-full border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105"
               />
             </div>
             <div>
@@ -110,8 +115,9 @@ function App() {
                   required: true,
                   minLength: 2,
                   maxLength: 12,
+                  onBlur: () => handleTrimInput('lastName'),
                 })}
-                className="mt-1 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="mt-1 p-3 w-full border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105"
               />
             </div>
 
@@ -139,29 +145,29 @@ function App() {
                 filter:
                   selectedPokemons.length !== 4
                     ? 'brightness(70%)'
-                    : 'brightness(100%)', // Тусклість, якщо не вибрано 4 покемони
+                    : 'brightness(100%)',
                 boxShadow:
                   selectedPokemons.length !== 4
                     ? '0 4px 6px rgba(0, 0, 0, 0.3)'
-                    : '0 10px 20px rgba(0, 0, 0, 0.4)', // Тінь, якщо не вибрано 4 покемони
-                pointerEvents: selectedPokemons.length !== 4 ? 'none' : 'auto', // Відключення hover, якщо покемони не вибрані
+                    : '0 10px 20px rgba(0, 0, 0, 0.4)',
+                pointerEvents: selectedPokemons.length !== 4 ? 'none' : 'auto',
                 transition:
-                  'filter 0.3s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out', // Плавні переходи для тусклості, тіні та масштабування
+                  'filter 0.3s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out',
               }}
             >
               <div
                 className="flex items-center justify-center"
-                style={{ transform: 'translateY(-45px)' }} // Зміщення тексту вниз
+                style={{ transform: 'translateY(-45px)' }}
               >
                 <span
                   className="font-bold"
                   style={{
                     fontSize: '0.8rem',
-                    color: 'white', // Білий текст
-                    backgroundColor: 'black', // Чорний фон
+                    color: 'white',
+                    backgroundColor: 'black',
                     borderRadius: '5px',
-                    paddingInline: '20px', // Додаємо відступи для кращого вигляду
-                    fontFamily: "'Poppins', sans-serif", // Використовуємо шрифт Poppins
+                    paddingInline: '20px',
+                    fontFamily: "'Poppins', sans-serif",
                   }}
                 >
                   To the Battle

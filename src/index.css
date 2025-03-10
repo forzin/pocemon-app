@@ -2,12 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* styles.css або аналогічний файл */
 .error-message {
   @apply bg-red-300 text-red-800 p-3 rounded-md shadow-md opacity-90;
-  @apply transition-opacity duration-300 ease-in-out; /* Плавне зникнення */
+  @apply transition-opacity duration-300 ease-in-out;
 }
 
 .error-message:not(:last-child) {
-  @apply mb-2; /* Між кожним повідомленням відступ */
+  @apply mb-2;
 }

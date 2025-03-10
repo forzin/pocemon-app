@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPokemonSprite } from '../api/getPokemon'; // Функція для отримання спрайтів покемонів
+import { getPokemonSprite } from '../api/getPokemon';
 
 interface PokemonSpritesProps {
   selectedPokemons: string[];
@@ -13,28 +13,23 @@ export const PokemonSprites: React.FC<PokemonSpritesProps> = ({
   useEffect(() => {
     if (selectedPokemons.length === 4) {
       const getSprites = async () => {
-        if (selectedPokemons.length === 4) {
-          const newSprites = await Promise.all(
-            selectedPokemons.map((pokemonName) => getPokemonSprite(pokemonName))
-          );
-          setSprites(newSprites);
-        }
+        const newSprites = await Promise.all(
+          selectedPokemons.map((pokemonName) => getPokemonSprite(pokemonName))
+        );
+        setSprites(newSprites);
       };
-
       getSprites();
+    } else {
+      setSprites([]);
     }
-
-    setSprites([]);
   }, [selectedPokemons]);
 
   return (
     <div className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      {/* Контейнер для 4 спрайтів */}
       {sprites.length === 4 && (
         <div className="flex space-x-6 justify-center">
           {sprites.map((spriteUrl, index) => (
             <div key={index} className="flex justify-center">
-              {/* Квадрати для відображення спрайтів */}
               <img
                 src={spriteUrl}
                 alt={`Pokemon ${index + 1}`}

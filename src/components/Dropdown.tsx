@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import React from 'react';
 
 interface Props {
   toggleDropdown: () => void;
   isVisible: boolean;
 }
 
-const DropdownButton: React.FC<Props> = ({ toggleDropdown, isVisible }) => (
+export const DropdownButton: React.FC<Props> = ({
+  toggleDropdown,
+  isVisible,
+}) => (
   <div className="relative inline-block text-left">
     <button
       type="button"
       onClick={toggleDropdown}
-      className="inline-flex justify-center w-56 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-200"
+      className="inline-flex justify-center w-56 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 border border-gray-500 rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-200"
     >
       {!isVisible ? 'Choose 4 pokemons' : 'Hide Pokemons'}
       <svg

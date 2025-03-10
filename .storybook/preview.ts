@@ -1,4 +1,5 @@
-import type { Preview } from '@storybook/react';
+// .storybook/preview.js
+import { Preview } from '@storybook/react';
 import '../src/index.css';
 
 const preview: Preview = {
@@ -9,9 +10,15 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    docs: {
+      theme: {
+        brandImage: '/luna_logo.svg',
+        brandTitle: 'Luna Edge',
+        brandUrl: '/',
+      },
+    },
   },
-
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export default preview;

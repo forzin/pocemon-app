@@ -19,12 +19,12 @@ export const SelectedPokemons: React.FC<Props> = ({
   return (
     selectedPokemons.length > 0 && (
       <div className="absolute top-72 left-0 w-56 bg-white shadow-md border border-gray-200 rounded-md p-2 z-20">
-        <h4 className="text-sm font-semibold">Selected Pokémon:</h4>
+        <h4 className="text-sm font-semibold">Selected Pokémons:</h4>
         <div className="space-y-2">
           {selectedPokemons.map((pokemon) => (
             <div
               key={pokemon}
-              className="flex justify-between items-center p-2 bg-blue-100 text-blue-800 rounded-md"
+              className="flex justify-between items-center p-2 bg-blue-200 text-blue-800 rounded-md"
             >
               <span>{pokemon.charAt(0).toUpperCase() + pokemon.slice(1)}</span>
               <button

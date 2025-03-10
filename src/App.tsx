@@ -19,7 +19,6 @@ function App() {
   const [selectedPokemons, setSelectedPokemons] = useState<string[]>([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     axios
@@ -38,15 +37,6 @@ function App() {
   const handleTrimInput = (fieldName: string) => {
     const value = watch(fieldName).trim();
     setValue(fieldName, value);
-  };
-
-  const handleButtonClick = () => {
-    if (selectedPokemons.length === 4) {
-      setIsSubmitting(true);
-
-      const button = document.getElementById('battleButton') as HTMLElement;
-      button.classList.add('animate-spin-fast');
-    }
   };
 
   return (
@@ -103,7 +93,7 @@ function App() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6 w-full max-w-md p-6 bg-white rounded-lg shadow-xl flex items-center relative"
+          className="space-y-6 w-full max-w-md p-6 bg-amber-200 rounded-lg shadow-xl flex items-center relative"
         >
           <div className="flex-1 space-y-6">
             <div>
@@ -144,10 +134,8 @@ function App() {
 
           <div className="ml-6">
             <button
-              type="button"
-              id="battleButton"
+              type="submit"
               disabled={selectedPokemons.length !== 4}
-              onClick={handleButtonClick}
               className={`w-40 h-40 rounded-full text-white flex items-center justify-center shadow-lg transition-all duration-600 ease-in-out transform hover:scale-110`}
               style={{
                 backgroundImage: 'url(/images/pokeball.svg)',
@@ -172,7 +160,6 @@ function App() {
                 style={{ transform: 'translateY(-45px)' }}
               >
                 <span
-                  id="battleText"
                   className="font-bold"
                   style={{
                     fontSize: '0.8rem',

@@ -6,6 +6,8 @@ import { SelectedPokemons } from './components/SelectedPokemons';
 import DropdownButton from './components/Dropdown';
 import PokemonSprites from './components/PokemonSprites';
 import PokemonSelect from './components/PokemonSelect';
+import pokeBallBackG from './assets/images/pokeball.svg';
+import backgroundImg from './assets/images/background.jpeg';
 
 function App() {
   const {
@@ -42,7 +44,7 @@ function App() {
   return (
     <div
       style={{
-        backgroundImage: `url(/images/background.jpeg)`,
+        backgroundImage: `url(${backgroundImg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         width: '100%',
@@ -138,7 +140,7 @@ function App() {
               disabled={selectedPokemons.length !== 4}
               className={`w-40 h-40 rounded-full text-white flex items-center justify-center shadow-lg transition-all duration-600 ease-in-out transform hover:scale-110`}
               style={{
-                backgroundImage: 'url(/images/pokeball.svg)',
+                backgroundImage: `url(${pokeBallBackG})`,
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',

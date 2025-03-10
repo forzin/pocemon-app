@@ -101,7 +101,7 @@ function App() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6 w-full max-w-md p-6 bg-amber-300 rounded-lg shadow-xl flex items-center relative"
+          className="space-y-6 w-full max-w-md p-6 bg-amber-300 rounded-lg shadow-xl flex items-center relative border-2 border-white"
         >
           <div className="flex-1 space-y-6">
             <div>

@@ -8,6 +8,7 @@ import PokemonSprites from './components/PokemonSprites';
 import PokemonSelect from './components/PokemonSelect';
 import pokeBallBackG from './assets/images/pokeball.svg';
 import backgroundImg from './assets/images/background.jpeg';
+import lunaLogo from './assets/logos/LunaEdgeLogo.svg';
 
 function App() {
   const {
@@ -50,6 +51,11 @@ function App() {
         width: '100%',
       }}
     >
+      <img
+        src={lunaLogo}
+        alt="logo"
+        className="absolute top-2 left-24 w-32 h-32 object-contain transition-all duration-500 ease-in-out hover:scale-110"
+      />
       <div className="flex justify-center items-start h-screen pt-40">
         <div
           className="flex justify-center items-start"
@@ -95,7 +101,7 @@ function App() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6 w-full max-w-md p-6 bg-amber-200 rounded-lg shadow-xl flex items-center relative"
+          className="space-y-6 w-full max-w-md p-6 bg-amber-300 rounded-lg shadow-xl flex items-center relative"
         >
           <div className="flex-1 space-y-6">
             <div>

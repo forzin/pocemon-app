@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.selectedPokemonsList {
+  @apply flex absolute top-[-12px] left-0;
+}
+
+.deleteSprite {
+  @apply cursor-pointer;
+}
+
+.spriteContainer {
+  @apply flex;
+}
+
+.iconXMark {
+  @apply w-[20px] h-[20px];
+}

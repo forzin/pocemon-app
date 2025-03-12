@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+.modalOverlay {
+  @apply fixed w-full h-full 
+  z-10 flex justify-center items-center 
+  transition-opacity duration-300;
+}
+
+.modalHeaderContainer {
+  @apply flex items-center justify-between mb-7;
+}
+
+.modalContainer {
+  @apply w-[448px] p-6 mx-auto mx-auto 
+  rounded-lg shadow-[0_2.5px_5px_rgba(0,0,0,0.2)];
+}
+
+.titleHeader {
+  @apply text-2xl font-semibold;
+}
+
+.icon {
+  @apply w-[32px] h-[32px];
+}
+
+.iconContainer {
+  @apply relative flex flex-col;
+}
+
+.buttonInput {
+  @apply w-[20px] h-[20px] absolute top-[-2px] 
+  right-0 flex items-center p-3 box-content
+  cursor-pointer;
+}
+
+.inputContainer {
+  @apply relative flex flex-col mb-2;
+}
+
+.inputTitle {
+  @apply text-xl mb-2;
+}
+
+.input {
+  @apply flex border border-gray-300 rounded-[8px] 
+  h-[40px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] 
+  focus:outline-none focus:border-blue-500 mb-2
+  duration-400 ease-in-out hover:border-blue-500
+  disabled:border-gray-200 disabled:cursor-not-allowed
+  disabled:bg-blue-100;
+}
+
+.borderRed {
+  @apply border-red-500;
+}
+
+.buttonContainer {
+  @apply flex gap-x-3 ml-auto;
+}
+
+.footerModal {
+  @apply flex justify-between pt-[12px];
+}
+
+.buttonCancel {
+  @apply font-semibold cursor-pointer;
+}
+
+.buttonSave {
+  @apply bg-blue-500 text-white rounded-[6px]
+  pt-[6px] pr-[10px] pb-[6px] pl-[10px] cursor-pointer;
+}
+
+.error {
+  @apply absolute top-[90%] left-0 text-red-500;
+}

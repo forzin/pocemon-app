@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import PlayerInfoModal from './components/PlayerInfoModal/PlayerInfoModal'
 
 function App() {
   return (
-    <div>
-      <p>Welcome to Luna Edge technical interview</p>
-    </div>
+    <>
+      <PlayerInfoModal />
+    </>
   )
 }
 

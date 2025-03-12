@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+.listContainer {
+  @apply absolute left-[80%] top-[50%];
+}
+
+.list {
+  @apply flex flex-col
+  bg-blue-100 overflow-auto 
+  p-3 w-45 h-60 gap-y-4 rounded-[8px];
+}
+
+.listItemContainer {
+  @apply flex justify-between border-b border-blue-200;
+}
+
+.iconPlus {
+  @apply w-[20px] h-[20px] stroke-blue-400 
+  duration-400 ease-in-out hover:stroke-blue-300;
+}
+
+.buttonPlus {
+  @apply cursor-pointer;
+}
+
+.searchBox {
+  @apply bg-blue-100 border border-gray-300 rounded-[8px]
+  w-[180px] h-[40px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] 
+  focus:outline-none focus:border-blue-500 mt-3
+  duration-400 ease-in-out hover:border-blue-500
+  disabled:border-gray-200 disabled:cursor-not-allowed
+  disabled:bg-blue-100;
+}
